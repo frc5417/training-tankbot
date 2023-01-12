@@ -11,7 +11,7 @@ import frc.robot.subsystems.Drivetrain;
 public class TankDrive extends CommandBase {
   private static Drivetrain m_drivetrain;
 
-  /** Creates a new TankDrive. */
+  /** Creates a new TankDrive. Requires the drivetrain subsystem because it is used. */
   public TankDrive(Drivetrain drivetrain) {
     m_drivetrain = drivetrain;
 

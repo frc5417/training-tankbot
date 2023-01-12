@@ -63,6 +63,7 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.schedule();
     }
 
+    // never have joystick / human control possible in auton.
     m_robotContainer.getTankDriveCommand().cancel();
   }
 
@@ -80,6 +81,7 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.cancel();
     }
 
+    // start the tank drive command during teleop. (checks for joystick input)
     m_robotContainer.getTankDriveCommand().schedule();
   }
 

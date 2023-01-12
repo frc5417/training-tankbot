@@ -36,6 +36,7 @@ public class RobotContainer {
     configureBindings();
   }
 
+  // below are getter classes for the joystick buttons / axises that we use
   public static double getControllerLeftAxisY() {
     return m_driverController.getRawAxis(1);
   }

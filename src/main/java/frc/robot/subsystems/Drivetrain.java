@@ -19,14 +19,17 @@ public class Drivetrain extends SubsystemBase {
 
   /** Creates a new Drivetrain. */
   public Drivetrain() {
+    // define motor controllers - uses port value from Constants file.
     leftDrive1 = new CANSparkMax(Constants.leftDrive1Port, MotorType.kBrushless);
     leftDrive2 = new CANSparkMax(Constants.leftDrive2Port, MotorType.kBrushless);
     rightDrive1 = new CANSparkMax(Constants.rightDrive1Port, MotorType.kBrushless);
     rightDrive2 = new CANSparkMax(Constants.rightDrive2Port, MotorType.kBrushless);
 
+    // sets the right side to inverted, so we don't have to worry about converting it when we set the percentage.
     rightDrive1.setInverted(true);
     rightDrive2.setInverted(true);
 
+    // set the 2nd motor controllers on each side to follow the first, so we only have to activate one and the other will mimick it.
     leftDrive2.follow(leftDrive1);
     rightDrive2.follow(rightDrive1);
   }
@@ -37,6 +40,7 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public void drive(double leftJoystick, double rightJoystick) {
+    // set a deadband (motors will not run between the negative and positive value of it)
     if (Math.abs(leftJoystick) < Constants.joytickDeadBand) {
       leftJoystick = 0;
     }
